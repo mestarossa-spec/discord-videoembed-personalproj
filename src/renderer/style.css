@@ -1,0 +1,126 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: -apple-system, "Segoe UI", Roboto, sans-serif;
+  margin: 0;
+  padding: 24px;
+  background: #1e1f22;
+  color: #e3e5e8;
+}
+
+h1 {
+  font-size: 18px;
+  margin: 0 0 4px;
+}
+
+.subtitle {
+  font-size: 13px;
+  color: #9aa0a6;
+  margin: 0 0 20px;
+}
+
+.drop-zone {
+  border: 2px dashed #4a4d52;
+  border-radius: 8px;
+  padding: 28px 16px;
+  text-align: center;
+  cursor: pointer;
+  font-size: 13px;
+  color: #b5bac1;
+  transition: border-color 0.15s, background 0.15s;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.drop-zone.dragover {
+  border-color: #5865f2;
+  background: rgba(88, 101, 242, 0.08);
+}
+
+.selected-file {
+  font-weight: 600;
+  color: #f2f3f5;
+}
+
+.field-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-top: 16px;
+}
+
+.field-row label {
+  font-size: 13px;
+  color: #b5bac1;
+}
+
+select {
+  flex: 1;
+  max-width: 300px;
+  padding: 8px;
+  border-radius: 6px;
+  border: 1px solid #4a4d52;
+  background: #2b2d31;
+  color: #e3e5e8;
+  font-size: 13px;
+}
+
+.upload-btn {
+  width: 100%;
+  margin-top: 20px;
+  padding: 10px;
+  border: none;
+  border-radius: 6px;
+  background: #5865f2;
+  color: white;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.upload-btn:disabled {
+  opacity: 0.6;
+  cursor: default;
+}
+
+.status {
+  min-height: 18px;
+  font-size: 13px;
+  color: #b5bac1;
+  margin-top: 12px;
+}
+
+.status.error {
+  color: #f23f42;
+}
+
+.result-box {
+  display: flex;
+  gap: 8px;
+  margin-top: 4px;
+}
+
+.result-box input {
+  flex: 1;
+  padding: 8px;
+  border-radius: 6px;
+  border: 1px solid #4a4d52;
+  background: #2b2d31;
+  color: #e3e5e8;
+  font-size: 13px;
+}
+
+.result-box button {
+  padding: 8px 14px;
+  border: none;
+  border-radius: 6px;
+  background: #3ba55c;
+  color: white;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+}

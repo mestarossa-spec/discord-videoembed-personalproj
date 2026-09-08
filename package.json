@@ -1,0 +1,15 @@
+{
+  "name": "discord-video-embedder",
+  "version": "1.0.0",
+  "description": "Drag-and-drop a video, upload it to a free host, get a Discord-embeddable direct link.",
+  "main": "src/main.js",
+  "scripts": {
+    "start": "electron ."
+  },
+  "author": "",
+  "license": "UNLICENSED",
+  "private": true,
+  "devDependencies": {
+    "electron": "^33.0.0"
+  }
+}

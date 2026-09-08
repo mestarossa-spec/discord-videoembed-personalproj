@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Discord Video Embedder</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <h1>Discord Video Embedder</h1>
+  <p class="subtitle">Drag a video in, get a direct link Discord will play inline.</p>
+
+  <div id="dropZone" class="drop-zone">
+    <span id="dropZoneLabel">Drop a video here, or click to choose a file</span>
+    <span id="selectedFile" class="selected-file"></span>
+  </div>
+  <input type="file" id="fileInput" accept=".mp4,.webm" hidden />
+
+  <div class="field-row">
+    <label for="provider">Host</label>
+    <select id="provider">
+      <option value="" selected disabled>-- choose a provider --</option>
+      <option value="catbox">Catbox (permanent, 200MB max)</option>
+      <option value="litterbox">Litterbox (temporary, 1GB max)</option>
+    </select>
+  </div>
+
+  <div class="field-row" id="litterboxTimeRow" style="display: none;">
+    <label for="litterboxTime">Expires after</label>
+    <select id="litterboxTime">
+      <option value="1h">1 hour</option>
+      <option value="12h">12 hours</option>
+      <option value="24h">24 hours</option>
+      <option value="72h" selected>72 hours</option>
+    </select>
+  </div>
+
+  <button id="uploadBtn" class="upload-btn">Upload</button>
+
+  <p id="status" class="status"></p>
+
+  <div id="resultBox" class="result-box" style="display: none;">
+    <input type="text" id="resultUrl" readonly />
+    <button id="copyBtn">Copy</button>
+  </div>
+
+  <script src="renderer.js"></script>
+</body>
+</html>
