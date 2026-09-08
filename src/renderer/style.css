@@ -98,10 +98,51 @@ select {
   color: #f23f42;
 }
 
+.result-group {
+  margin-top: 4px;
+}
+
+.result-row {
+  margin-bottom: 12px;
+}
+
+.result-row label {
+  display: block;
+  font-size: 12px;
+  color: #9aa0a6;
+  margin-bottom: 4px;
+}
+
 .result-box {
   display: flex;
   gap: 8px;
-  margin-top: 4px;
+}
+
+.masked-row {
+  display: flex;
+  gap: 8px;
+  margin-top: 6px;
+}
+
+.masked-row input {
+  flex: 1;
+  padding: 8px;
+  border-radius: 6px;
+  border: 1px solid #4a4d52;
+  background: #2b2d31;
+  color: #e3e5e8;
+  font-size: 13px;
+}
+
+.masked-row button {
+  padding: 8px 14px;
+  border: none;
+  border-radius: 6px;
+  background: #4a4d52;
+  color: white;
+  font-size: 12px;
+  cursor: pointer;
+  white-space: nowrap;
 }
 
 .result-box input {

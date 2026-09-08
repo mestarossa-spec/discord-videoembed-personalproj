@@ -10,6 +10,10 @@ const status = document.getElementById('status');
 const resultBox = document.getElementById('resultBox');
 const resultUrl = document.getElementById('resultUrl');
 const copyBtn = document.getElementById('copyBtn');
+const embedUrl = document.getElementById('embedUrl');
+const copyEmbedBtn = document.getElementById('copyEmbedBtn');
+const maskedLabel = document.getElementById('maskedLabel');
+const copyMaskedBtn = document.getElementById('copyMaskedBtn');
 
 let selectedPath = null;
 
@@ -77,7 +81,8 @@ uploadBtn.addEventListener('click', async () => {
   if (res.ok) {
     status.textContent = '';
     resultUrl.value = res.url;
-    resultBox.style.display = 'flex';
+    embedUrl.value = res.embedUrl;
+    resultBox.style.display = 'block';
   } else {
     status.textContent = res.error;
     status.classList.add('error');
@@ -89,4 +94,20 @@ copyBtn.addEventListener('click', async () => {
   const original = copyBtn.textContent;
   copyBtn.textContent = 'Copied!';
   setTimeout(() => (copyBtn.textContent = original), 1200);
+});
+
+copyEmbedBtn.addEventListener('click', async () => {
+  await navigator.clipboard.writeText(embedUrl.value);
+  const original = copyEmbedBtn.textContent;
+  copyEmbedBtn.textContent = 'Copied!';
+  setTimeout(() => (copyEmbedBtn.textContent = original), 1200);
+});
+
+copyMaskedBtn.addEventListener('click', async () => {
+  const label = maskedLabel.value.trim() || 'Video';
+  const masked = `[${label}](${embedUrl.value})`;
+  await navigator.clipboard.writeText(masked);
+  const original = copyMaskedBtn.textContent;
+  copyMaskedBtn.textContent = 'Copied!';
+  setTimeout(() => (copyMaskedBtn.textContent = original), 1200);
 });

@@ -38,9 +38,25 @@
 
   <p id="status" class="status"></p>
 
-  <div id="resultBox" class="result-box" style="display: none;">
-    <input type="text" id="resultUrl" readonly />
-    <button id="copyBtn">Copy</button>
+  <div id="resultBox" class="result-group" style="display: none;">
+    <div class="result-row">
+      <label>Discord-ready link</label>
+      <div class="result-box">
+        <input type="text" id="embedUrl" readonly />
+        <button id="copyEmbedBtn">Copy</button>
+      </div>
+      <div class="masked-row">
+        <input type="text" id="maskedLabel" value="Video" placeholder="Link text" />
+        <button id="copyMaskedBtn">Copy as masked link</button>
+      </div>
+    </div>
+    <div class="result-row">
+      <label>Direct file link</label>
+      <div class="result-box">
+        <input type="text" id="resultUrl" readonly />
+        <button id="copyBtn">Copy</button>
+      </div>
+    </div>
   </div>
 
   <script src="renderer.js"></script>
