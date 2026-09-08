@@ -73,8 +73,10 @@ ipcMain.handle('upload-video', async (_event, { filePath, provider, litterboxTim
         ? await uploadToCatbox(filePath)
         : await uploadToLitterbox(filePath, litterboxTime);
 
-    return { ok: true, url };
+        return { ok: true, url };
   } catch (err) {
+    console.error('Upload error:', err);
+    if (err.cause) console.error('Cause:', err.cause);
     return { ok: false, error: err.message || 'Upload failed for an unknown reason.' };
   }
 });

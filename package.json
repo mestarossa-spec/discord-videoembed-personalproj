@@ -10,6 +10,6 @@
   "license": "UNLICENSED",
   "private": true,
   "devDependencies": {
-    "electron": "^33.0.0"
+    "electron": "^44.2.0"
   }
 }
