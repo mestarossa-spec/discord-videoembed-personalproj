@@ -4,12 +4,28 @@
   "description": "Drag-and-drop a video, upload it to a free host, get a Discord-embeddable direct link.",
   "main": "src/main.js",
   "scripts": {
-    "start": "electron ."
+    "start": "electron .",
+    "dist": "electron-builder"
   },
   "author": "",
   "license": "UNLICENSED",
   "private": true,
   "devDependencies": {
-    "electron": "^44.2.0"
+    "electron": "^44.2.0",
+    "electron-builder": "^26.0.0"
+  },
+  "build": {
+    "appId": "com.mestarossa.discordvideoembedder",
+    "productName": "Discord Video Embedder",
+    "files": [
+      "src/**/*",
+      "package.json"
+    ],
+    "directories": {
+      "output": "dist"
+    },
+    "win": {
+      "target": "portable"
+    }
   }
 }
