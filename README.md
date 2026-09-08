@@ -54,7 +54,23 @@ network (e.g. mobile data, no VPN).
 - Node.js (with npm)
 - Windows
 
-## Setup
+## Getting the executable
+
+This repo contains source only — `node_modules/` and `dist/` (the built `.exe`)
+are gitignored on purpose (see [Contributing](#contributing) below for why).
+To get a runnable `.exe`, clone the repo and build it yourself:
+
+```bash
+npm install
+npm run dist
+```
+
+The standalone app will be at `dist\Discord Video Embedder 1.0.0.exe` — just
+double-click it, no installer needed. (Windows SmartScreen will flag it as
+"unrecognized publisher" on first run since it isn't code-signed — click
+"More info" → "Run anyway".)
+
+## Setup (for development)
 
 ```bash
 npm install
@@ -69,7 +85,14 @@ npm start
 4. Copy the **Discord-ready link** (or the masked-link version) and paste it
    into Discord — it'll embed and play inline with the app's thumbnail.
 
+## Contributing
+
+`node_modules/` and `dist/` aren't committed because both are fully
+reproducible: `node_modules/` from `package.json`/`package-lock.json` via
+`npm install`, and `dist/` from source via `npm run dist`. Committing either
+would bloat the repo with regenerable content.
+
 ## Status
 
 Working end-to-end, confirmed embedding correctly in real Discord messages.
-Not yet packaged as a standalone `.exe` (currently run via `npm start`).
+Packaged as a standalone `.exe` via `electron-builder` (`npm run dist`).
