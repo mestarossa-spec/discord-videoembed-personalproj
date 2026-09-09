@@ -4,6 +4,7 @@ const fs = require('fs');
 
 const { uploadToCatbox } = require('./providers/catbox');
 const { uploadToLitterbox } = require('./providers/litterbox');
+const { uploadToZeroXZero } = require('./providers/0x0');
 
 // Formats Discord reliably inline-embeds (playable in-chat). .mov is deliberately
 // excluded: it works inconsistently across desktop/mobile clients.
@@ -12,6 +13,7 @@ const ALLOWED_EXTENSIONS = new Set(['.mp4', '.webm']);
 const MAX_SIZE_BYTES = {
   catbox: 200 * 1024 * 1024, // 200MB
   litterbox: 1024 * 1024 * 1024, // 1GB
+  '0x0': 512 * 1024 * 1024, // 512MB
 };
 
 function createWindow() {
@@ -54,7 +56,7 @@ ipcMain.handle('upload-video', async (_event, { filePath, provider, litterboxTim
       };
     }
 
-    if (provider !== 'catbox' && provider !== 'litterbox') {
+    if (provider !== 'catbox' && provider !== 'litterbox' && provider !== '0x0') {
       return { ok: false, error: 'Choose a host provider before uploading.' };
     }
 
@@ -71,7 +73,9 @@ ipcMain.handle('upload-video', async (_event, { filePath, provider, litterboxTim
     const url =
       provider === 'catbox'
         ? await uploadToCatbox(filePath)
-        : await uploadToLitterbox(filePath, litterboxTime);
+        : provider === 'litterbox'
+        ? await uploadToLitterbox(filePath, litterboxTime)
+        : await uploadToZeroXZero(filePath);
 
     // Wrap the raw file link through Autocompressor's embed tool. Discord's own
     // link-preview crawler often fails to inline-embed a bare hotlinked video
