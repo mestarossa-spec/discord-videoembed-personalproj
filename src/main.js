@@ -73,7 +73,7 @@ ipcMain.handle('upload-video', async (_event, { filePath, provider, litterboxTim
         ? await uploadToCatbox(filePath)
         : await uploadToLitterbox(filePath, litterboxTime);
 
-        // Wrap the raw file link through Autocompressor's embed tool. Discord's own
+    // Wrap the raw file link through Autocompressor's embed tool. Discord's own
     // link-preview crawler often fails to inline-embed a bare hotlinked video
     // (especially from smaller/throttled hosts); this wrapper serves the
     // metadata Discord's crawler actually needs to render it inline.
@@ -81,7 +81,7 @@ ipcMain.handle('upload-video', async (_event, { filePath, provider, litterboxTim
     // gaps between the embed and the next message vs. Autocompressor's default).
     const THUMBNAIL_URL = 'https://staticdelivery.nexusmods.com/mods/8522/images/headers/10_1776223959.jpg';
     const embedUrl = `https://autocompressor.net/av1?v=${encodeURIComponent(url)}&i=${encodeURIComponent(THUMBNAIL_URL)}`;
-    
+
     return { ok: true, url, embedUrl };
   } catch (err) {
     console.error('Upload error:', err);
